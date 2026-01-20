@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misión de Cumpleaños</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main-container">
+        <h1>🎂 Feliz Cumpleaños Mi Amor 🎉</h1>
+
+        <section id="intro-section">
+            <div class="romantic-intro">
+                <p class="love-message">“Mi amor, cada momento contigo es un tesoro que quiero celebrar.”</p>
+                <p>He preparado una aventura especial para tu corazón. Cada desafío es una carta de amor que escribí para ti...</p>
+                <video class="video-player" controls controlslist="nodownload nofullscreen" disablepictureinpicture>
+                    <source src="assets/video_intro.mp4" type="video/mp4">
+                    Tu navegador no soporta video.
+                </video>
+                <p class="mission-desc">Completa los 5 desafíos del amor para desbloquear tu sorpresa de cumpleaños 🎁</p>
+            </div>
+            <div class="progress-heart">
+                <div class="heart-progress" id="heart-progress"></div>
+                <span class="progress-text">0/5 Corazones Conquistados</span>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="challenges-section">
+            
+            <!-- Desafío 1: Primer Amor -->
+            <div class="love-challenge" id="challenge-1">
+                <div class="challenge-header">
+                    <div class="heart-icon">💖</div>
+                    <div class="challenge-info">
+                        <h3>Primera Chispa del Amor</h3>
+                        <span class="difficulty easy">Dulce recuerdo</span>
+                    </div>
+                </div>
+                <div class="challenge-content">
+                    <p class="romantic-question">“¿Recuerdas el mes en que nuestros corazones se encontraron por primera vez?”</p>
+                    <input type="text" id="input-memory1" placeholder="Escribe el nombre del mes..." class="romantic-input">
+                    <button onclick="checkFirstMemory()" class="love-btn">Recordar Juntos 💕</button>
+                    <p id="feedback-1" class="feedback-msg"></p>
+                </div>
+            </div>
+
+            <!-- Desafío 2: Secretos del Corazón -->
+            <div class="love-challenge locked" id="challenge-2">
+                <div class="challenge-header">
+                    <div class="heart-icon" id="troll-heart">💝</div>
+                    <div class="challenge-info">
+                        <h3 id="secret-title">Secretos del Corazón</h3>
+                        <span class="difficulty easy">Visión del alma</span>
+                    </div>
+                </div>
+                <div class="challenge-content">
+                    <p class="romantic-question">"¡Encuentra el corazón verdadero entre todos estos corazones falsos!"</p>
+                    <div class="hearts-container">
+                        <div class="fake-heart" onclick="trollClick(1)">💗</div>
+                        <div class="fake-heart" onclick="trollClick(2)">💖</div>
+                        <div class="fake-heart" onclick="trollClick(3)">💕</div>
+                        <div class="fake-heart" onclick="trollClick(4)">💞</div>
+                        <div class="fake-heart" onclick="trollClick(5)">💓</div>
+                        <div class="fake-heart" onclick="trollClick(6)">💘</div>
+                        <div class="fake-heart" onclick="trollClick(7)">💗</div>
+                        <div class="fake-heart" onclick="trollClick(8)">💖</div>
+                        <div class="fake-heart" onclick="trollClick(9)">💕</div>
+                    </div>
+                    <div class="troll-info">
+                        <p id="attempts-counter">Corazones tocados: <span id="count">0</span>/9</p>
+                        <p id="troll-hint" style="display: none; color: var(--accent-gold); font-style: italic;">
+                            💡 "Ningún corazón visible es el correcto... ¿Dónde puede estar el verdadero? 🤔"
+                        </p>
+                        <p id="final-hint" style="display: none; color: var(--primary-love); font-weight: bold;">
+                            🎯 ¡Prueba tocando el título "Secretos del Corazón"!
+                        </p>
+                    </div>
+                    <p id="feedback-2" class="feedback-msg"></p>
+                </div>
+            </div>
+
+            <!-- Desafío 3: Álbum de Memorias -->
+            <div class="love-challenge locked" id="challenge-3">
+                <div class="challenge-header">
+                    <div class="heart-icon">📸</div>
+                    <div class="challenge-info">
+                        <h3>Álbum de Nuestras Memorias</h3>
+                        <span class="difficulty medium">Recuerdos preciosos</span>
+                    </div>
+                </div>
+                <div class="challenge-content">
+                    <p class="romantic-question">“¿Recuerdas estos momentos especiales de nuestra historia de amor?”</p>
+                    <div class="memory-game">
+                        <div class="memory-question" id="memory-question">¿Qué situación especial mencioné sobre cómo me enamoré de ti?</div>
+                        <div class="memory-options">
+                            <button class="memory-option" onclick="checkMemoryAnswer('Me enamoré cuando te vi por primera vez')">Me enamoré cuando te vi por primera vez 😍</button>
+                            <button class="memory-option" onclick="checkMemoryAnswer('Me enamoré sin haberte visto ni escuchado tu voz')">Me enamoré sin haberte visto ni escuchado tu voz 💕</button>
+                            <button class="memory-option" onclick="checkMemoryAnswer('Me enamoré en nuestra primera llamada')">Me enamoré en nuestra primera llamada 📞</button>
+                            <button class="memory-option" onclick="checkMemoryAnswer('Me enamoré leyendo tus mensajes')">Me enamoré leyendo tus mensajes 💌</button>
+                        </div>
+                        <div class="memory-progress">
+                            <span>Pregunta <span id="question-number">1</span> de 3</span>
+                        </div>
+                    </div>
+                    <p id="feedback-3" class="feedback-msg"></p>
+                </div>
+            </div>
+
+            <!-- Desafío 4: Adivinanza del Alma -->
+            <div class="love-challenge locked" id="challenge-4">
+                <div class="challenge-header">
+                    <div class="heart-icon">🔐</div>
+                    <div class="challenge-info">
+                        <h3>Descifrador de Amor</h3>
+                        <span class="difficulty hard">Código secreto romántico 📜</span>
+                    </div>
+                </div>
+                <div class="challenge-content">
+                    <p class="romantic-question">"¡Descifra este mensaje secreto que escribí para ti! Cada número representa una letra del alfabeto..."</p>
+                    <div class="decoder-puzzle">
+                        <div class="secret-message">-&nbsp;&nbsp;.&nbsp;&nbsp;/&nbsp;&nbsp;.-&nbsp;&nbsp;--&nbsp;&nbsp;---&nbsp;&nbsp;/&nbsp;&nbsp;..-.&nbsp;&nbsp;.&nbsp;&nbsp;.-.</div>
+                        <div class="decoder-hint">📻 Pista: Es código morse... ¿Puedes descifrar estas 3 palabras?</div>
+                        <input type="text" id="decoder-input" placeholder="Escribe aquí el mensaje descifrado..." class="romantic-input">
+                        <button onclick="checkDecodedMessage()" class="love-btn">Descifrar Mensaje 🔓</button>
+                    </div>
+                    <p id="feedback-4" class="feedback-msg"></p>
+                </div>
+            </div>
+
+            <!-- Desafío 5: Declaración Eterna -->
+            <div class="love-challenge locked" id="challenge-5">
+                <div class="challenge-header">
+                    <div class="heart-icon">🔢</div>
+                    <div class="challenge-info">
+                        <h3>Contador del Corazón</h3>
+                        <span class="difficulty very-hard">Observación y amor 👀<span class="countable-heart">💕</span></span>
+                    </div>
+                </div>
+                <div class="challenge-content">
+                    <p class="romantic-question">"¡Cuenta cuántos corazones rojos ves en este desafío de amor!"</p>
+                    <div class="love-counter-game">
+                        <div class="love-text">
+                            💖 Mi amor, cada 💔 día que pasa me enamoro 💕 más de ti. 💙 Eres la razón de mi 💖 felicidad y mi ❤️ corazón late 💔 sólo por ti. 💕 Quiero pasar toda mi 💛 vida contigo, mi ❤️ princesa hermosa. 💖 Eres mi 💙 todo y mi 💕 único amor verdadero. ❤️
+                        </div>
+                        <div class="counter-hint">📍 <span class="countable-heart">❤️</span> ¡Ojo! Cuenta los corazones correctos sin modificaciones <span class="countable-heart">💕</span></div>
+                        <div class="counter-input">
+                            <label>Total de puntos:</label>
+                            <input type="number" id="heart-count-input" min="0" max="20" class="romantic-input">
+                            <button onclick="checkHeartCount()" class="love-btn">Confirmar Cuenta 📝</button>
+                        </div>
+                    </div>
+                    <p id="feedback-5" class="feedback-msg"></p>
+                </div>
+            </div>
+
+        </section>
+
+        <hr>
+
+        <section id="unlock-section" class="hidden">
+            <div class="vault-container">
+                <h2>🔐 Bóveda de Nuestro Amor</h2>
+                <p class="vault-message">Has conquistado todos los corazones, mi amor 💕</p>
+                <p>Has conquistado todos los desafíos de mi corazón. Las palabras que obtuviste son pistas para descifrar una fecha muy especial... ¡La fecha en que me pediste ser tu enamorada! 💕</p>
+                
+                <div class="keys-collected">
+                    <div class="key-slot">
+                        <div class="key-number">1</div>
+                        <div class="key-word" id="key-1">???</div>
+                        <div class="key-desc">Primera Chispa</div>
+                    </div>
+                    <div class="key-slot">
+                        <div class="key-number">2</div>
+                        <div class="key-word" id="key-2">???</div>
+                        <div class="key-desc">Secreto Revelado</div>
+                    </div>
+                    <div class="key-slot">
+                        <div class="key-number">3</div>
+                        <div class="key-word" id="key-3">???</div>
+                        <div class="key-desc">Memoria Preciosa</div>
+                    </div>
+                    <div class="key-slot">
+                        <div class="key-number">4</div>
+                        <div class="key-word" id="key-4">???</div>
+                        <div class="key-desc">Enigma Resuelto</div>
+                    </div>
+                    <div class="key-slot">
+                        <div class="key-number">5</div>
+                        <div class="key-word" id="key-5">???</div>
+                        <div class="key-desc">Declaración Eterna</div>
+                    </div>
+                </div>
+                
+                <div class="vault-unlock">
+                    <input type="password" id="final-password-input" placeholder="Convierte las pistas en números (DDMMA)..." class="vault-input">
+                    <button id="btn-unlock-final" class="vault-btn">🔓 Abrir mi Corazón</button>
+                    <p id="final-feedback" class="feedback-msg"></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="reward-section" class="hidden">
+            <h2>🎉 ¡FELIZ CUMPLEAÑOS, MI AMOR! 🎉</h2>
+            <p>Lo lograste. Eres increíble.</p>
+            <video id="main-video" class="video-player" controls controlslist="nodownload nofullscreen" disablepictureinpicture>
+                <source src="assets/video_final.mp4" type="video/mp4">
+                Tu navegador no soporta video.
+            </video>
+            
+            <div id="continue-prompt" class="continue-section hidden">
+                <div class="continue-container">
+                    <h3>¿Deseas continuar?</h3>
+                    <div class="warning-message">
+                        <p>⚠️ <strong>ADVERTENCIA:</strong> Si continúas, no habrá vuelta atrás...</p>
+                        <p>Estás a punto de descubrir algo muy especial 💕</p>
+                    </div>
+                    <div class="continue-buttons">
+                        <button id="btn-continue" class="continue-btn yes">✨ Sí, continuar ✨</button>
+                        <button id="btn-stay" class="continue-btn no">💖 Quedarme aquí 💖</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
